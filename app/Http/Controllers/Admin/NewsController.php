@@ -31,11 +31,7 @@ class NewsController extends Controller
         なお，$requestはRequestのインスタンスである．
         */
         $form = $request->all(); //$request->all();はformで入力された値を取得することができます．
-<<<<<<< HEAD
         
-=======
-
->>>>>>> f44c57b42a2ab1a40ffd0a86981fbd0f5a009167
         /*
         $formには，
         ["title" => "タイトルの内容"
@@ -50,28 +46,17 @@ class NewsController extends Controller
         if(isset($form['image'])){
             //$path = $request->file('image')->store('public/image'); //create.blade.phpの<input type="file" class="form-control-file" name="image"> & storeはパスを指定するメソッド．
             //$news->image_path = basename($path); //basenameは，ファイル名のみを取り出す
-<<<<<<< HEAD
             
-=======
-
->>>>>>> f44c57b42a2ab1a40ffd0a86981fbd0f5a009167
             /*
             スコープ定義演算子「::」は，クラスのプロパティとメソッドにアクセスする時に使います。
             (https://tomo-lifeblog.com/what-arrow-scope-php)
             */
 
             /*
-<<<<<<< HEAD
             (1)$news->image_pathは$news['image_path']と記載してもよい．
             (2)$newsはimage_pathを持っておらず，以下の「$news->image_path = ～;」で設定している．
             */
             
-=======
-            (1)$news->image_pathは$news['image_path']と記載してもよい
-            (2)$newsはimage_pathを持っておらず，以下の「$news->image_path = ～;」で設定している．
-            */
-
->>>>>>> f44c57b42a2ab1a40ffd0a86981fbd0f5a009167
             $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
             $news->image_path = Storage::disk('s3')->url($path);
         } else {
@@ -82,12 +67,8 @@ class NewsController extends Controller
         unset($form['_token']);
         //フォームから送信されてきたimageを削除する
         unset($form['image']);
-<<<<<<< HEAD
         
         
-=======
-
->>>>>>> f44c57b42a2ab1a40ffd0a86981fbd0f5a009167
         //データベースに保存する
         $news->fill($form); //Newsテーブル($news = new News;)に$formを挿入する
         $news->save();
@@ -146,11 +127,7 @@ class NewsController extends Controller
             //送信されてきたフォームデータを格納する
             $news_form = $request->all();
             if ($request->remove == 'true') {
-<<<<<<< HEAD
               ////$news_form['image_path']は$news->image_pathと記載してもよい．
-=======
-              //$news_form['image_path']は$news->image_pathと記載してもよい．
->>>>>>> f44c57b42a2ab1a40ffd0a86981fbd0f5a009167
               $news_form['image_path'] = null;
             } elseif ($request->file('image')) {
               $path = Storage::disk('s3')->putFile('/',$news_form['image'],'public');
